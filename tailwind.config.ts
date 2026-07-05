@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Lato', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        serif: ['Cormorant Garamond', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -61,6 +61,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+      },
+      boxShadow: {
+        'gold-glow': '0 4px 24px -4px hsla(36, 70%, 50%, 0.25)',
+        'gold-glow-lg': '0 8px 32px -6px hsla(36, 70%, 50%, 0.30)',
       },
       borderRadius: {
         lg: "var(--radius)",

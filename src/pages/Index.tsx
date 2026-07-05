@@ -8,6 +8,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SectionDivider from "@/components/SectionDivider";
 import { useCanonical } from "@/hooks/useCanonical";
 
 const Index = () => {
@@ -28,9 +29,13 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <HeroSection />
+      <SectionDivider />
       <AboutSection />
+      <SectionDivider />
       <ServicesSection />
+      <SectionDivider />
       <TestimonialsSection />
+      <SectionDivider />
       <ContactSection />
       <Footer />
       <WhatsAppButton />

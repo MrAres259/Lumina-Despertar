@@ -51,78 +51,86 @@ const Navbar = () => {
   const show = !hidden || hovered || window.scrollY <= 0;
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border transition-transform duration-300"
-      style={{ transform: show ? "translateY(0)" : "translateY(-100%)" }}
+    <div
+      className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 transition-transform duration-500 ease-out"
+      style={{ transform: show ? "translateY(0)" : "translateY(calc(-100% - 1rem))" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="container mx-auto px-4 py-8 flex items-center justify-between">
-        <Link to="/">
-          <img src={logo} alt="Lumina Despertar" className="h-20 md:h-24" />
-        </Link>
+      <nav className="mx-auto max-w-6xl bg-background/80 backdrop-blur-xl border border-border/60 rounded-2xl shadow-lg shadow-black/[0.03]">
+        <div className="px-6 py-3 flex items-center justify-between">
+          <Link to="/">
+            <img src={logo} alt="Lumina Despertar" className="h-12 md:h-14" />
+          </Link>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) =>
-            link.href.startsWith("/") ? (
-              <Link
-                key={link.label}
-                to={link.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <button
-                key={link.label}
-                onClick={() => handleNavClick(link.href)}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
-              >
-                {link.label}
-              </button>
-            )
-          )}
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-            <Button className="rounded-full px-6">Agendar Cita</Button>
-          </a>
+          {/* Desktop */}
+          <div className="hidden md:flex items-center gap-7">
+            {navLinks.map((link) =>
+              link.href.startsWith("/") ? (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="relative text-sm font-medium text-foreground/70 hover:text-primary transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-0 hover:after:w-full after:bg-accent after:transition-all after:duration-300"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  key={link.label}
+                  onClick={() => handleNavClick(link.href)}
+                  className="relative text-sm font-medium text-foreground/70 hover:text-primary transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-0 hover:after:w-full after:bg-accent after:transition-all after:duration-300"
+                >
+                  {link.label}
+                </button>
+              )
+            )}
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              <Button className="rounded-full px-7 shadow-gold-glow hover:shadow-gold-glow-lg transition-shadow duration-300">
+                Agendar Cita
+              </Button>
+            </a>
+          </div>
+
+          {/* Mobile toggle */}
+          <button className="md:hidden text-foreground" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
-        {/* Mobile toggle */}
-        <button className="md:hidden text-foreground" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden bg-background border-t border-border px-4 pb-4 space-y-3">
-          {navLinks.map((link) =>
-            link.href.startsWith("/") ? (
-              <Link
-                key={link.label}
-                to={link.href}
-                onClick={() => setIsOpen(false)}
-                className="block py-2 text-foreground/80 hover:text-primary transition-colors"
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <button
-                key={link.label}
-                onClick={() => handleNavClick(link.href)}
-                className="block w-full text-left py-2 text-foreground/80 hover:text-primary transition-colors"
-              >
-                {link.label}
-              </button>
-            )
-          )}
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="block">
-            <Button className="w-full rounded-full">Agendar Cita</Button>
-          </a>
+        {/* Mobile menu */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
+            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="border-t border-border/40 px-6 pb-5 pt-3 space-y-1">
+            {navLinks.map((link) =>
+              link.href.startsWith("/") ? (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block py-2.5 text-foreground/70 hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  key={link.label}
+                  onClick={() => handleNavClick(link.href)}
+                  className="block w-full text-left py-2.5 text-foreground/70 hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </button>
+              )
+            )}
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="block pt-2">
+              <Button className="w-full rounded-full shadow-gold-glow">Agendar Cita</Button>
+            </a>
+          </div>
         </div>
-      )}
-    </nav>
+      </nav>
+    </div>
   );
 };
 

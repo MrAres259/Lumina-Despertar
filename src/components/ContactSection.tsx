@@ -12,11 +12,13 @@ const ContactSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="contacto" className="py-24 bg-secondary/30">
-      <div className="container mx-auto px-4" ref={ref}>
+    <section id="contacto" className="relative py-28 bg-secondary/30 bg-linen overflow-hidden">
+      <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <div className={`text-center mb-16 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>
-          <p className="text-accent font-medium text-sm uppercase tracking-widest mb-2">Contacto</p>
-          <h2 className="text-4xl font-serif font-bold text-foreground mb-4">
+          <p className="text-accent font-semibold text-xs uppercase tracking-[0.2em] mb-3">
+            Contacto
+          </p>
+          <h2 className="text-4xl lg:text-5xl font-serif font-medium text-foreground mb-4 tracking-tight">
             ¿Lista para dar el primer paso?
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
@@ -28,13 +30,16 @@ const ContactSection = () => {
           {contactInfo.map(({ icon: Icon, label, value }, i) => (
             <div
               key={label}
-              className={`group text-center p-6 rounded-2xl bg-background shadow-sm border border-border/50 cursor-default
-                transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-accent/40
+              className={`group text-center p-7 rounded-2xl bg-background/80 backdrop-blur-sm shadow-sm border border-border/30 cursor-default
+                transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-gold-glow hover:border-accent/30
                 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
               style={{ animationDelay: `${i * 120}ms` }}
             >
-              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:bg-accent/20 group-hover:scale-110">
-                <Icon size={22} className="text-accent transition-transform duration-300 group-hover:scale-110" />
+              <div className="w-14 h-14 rounded-full border-2 border-accent/40 flex items-center justify-center mx-auto mb-5 transition-all duration-300 group-hover:border-accent/70 group-hover:bg-accent/10 group-hover:scale-105">
+                <Icon
+                  size={22}
+                  className="text-accent transition-transform duration-300 group-hover:scale-110"
+                />
               </div>
               <p className="font-semibold text-foreground text-sm mb-1">{label}</p>
               <p className="text-muted-foreground text-sm break-words">{value}</p>
@@ -42,8 +47,13 @@ const ContactSection = () => {
           ))}
         </div>
 
-        {/* Map placeholder */}
-        <div className={`mt-16 max-w-4xl mx-auto rounded-2xl overflow-hidden border border-border/50 ${isVisible ? "animate-fade-in" : "opacity-0"}`}>
+        {/* Map with golden frame */}
+        <div
+          className={`mt-16 max-w-4xl mx-auto rounded-2xl overflow-hidden border-2 border-accent/20 shadow-lg ${
+            isVisible ? "animate-fade-in" : "opacity-0"
+          }`}
+          style={{ animationDelay: "500ms" }}
+        >
           <iframe
             title="Ubicación Metro Normal, Ciudad de México"
             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Metro+Normal,Ciudad+de+Mexico&center=19.44468,-99.16705&zoom=16"
