@@ -15,7 +15,7 @@ const AboutSection = () => {
   return (
     <section id="sobre-mi" className="py-28 bg-background">
       <div className="container mx-auto px-4" ref={ref}>
-        <div className="grid md:grid-cols-5 gap-16 lg:gap-20 items-center">
+        <div className="grid md:grid-cols-5 gap-16 lg:gap-20 items-center max-w-6xl mx-auto">
           {/* Photo */}
           <div className={`md:col-span-2 ${isVisible ? "animate-scale-in" : "opacity-0"}`}>
             <div className="relative">

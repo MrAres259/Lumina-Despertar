@@ -19,9 +19,9 @@ const HeroSection = () => {
       <div className="absolute top-1/2 left-1/3 w-48 h-48 rounded-full bg-accent/[0.05] blur-2xl" />
 
       <div className="container mx-auto px-4 relative z-10 pt-32 pb-24 md:pt-36 md:pb-28">
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
           {/* ── Left column: text ── */}
-          <div className="animate-fade-in-up max-w-xl">
+          <div className="animate-fade-in-up max-w-xl md:ml-auto">
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-5 py-2 text-sm font-medium mb-8 border border-primary/10">
               <Sparkles size={15} />
               Consultorio Psicológico

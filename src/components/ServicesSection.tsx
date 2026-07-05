@@ -61,7 +61,7 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 max-w-6xl mx-auto">
           {services.map(({ icon: Icon, title, description, showExpertiseStar }, i) => (
             <Card
               key={title}
